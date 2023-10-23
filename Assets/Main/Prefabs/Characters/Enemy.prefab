@@ -58,6 +58,22 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 979224611258597746, guid: d7d763c8b4253df4ba6679b6b3cac5f5, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d7d763c8b4253df4ba6679b6b3cac5f5, type: 3}
+--- !u!136 &1238030457600558287 stripped
+CapsuleCollider:
+  m_CorrespondingSourceObject: {fileID: 686533981982821173, guid: d7d763c8b4253df4ba6679b6b3cac5f5, type: 3}
+  m_PrefabInstance: {fileID: 1777040728610263034}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2794270542765985361 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4498655543007691179, guid: d7d763c8b4253df4ba6679b6b3cac5f5, type: 3}
+  m_PrefabInstance: {fileID: 1777040728610263034}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2794270542822863220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 837198565df14dd59ff95e621724b5fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2794270542822863216 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4498655542935043722, guid: d7d763c8b4253df4ba6679b6b3cac5f5, type: 3}
@@ -80,6 +96,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 902c11814edc481aba5d9eda94ba1603, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animationBehaviour: {fileID: 2794270542765985361}
+  capsuleCollider: {fileID: 1238030457600558287}
   health: 100
 --- !u!114 &7424427558592770145
 MonoBehaviour:

@@ -19,7 +19,7 @@ namespace Main.CodeBase.Core
         [SerializeField] private float damage = 1f;
 
 
-        private Transform _target;
+        private Health _target;
         private float _attackTimer;
 
         private void Update()
@@ -27,15 +27,15 @@ namespace Main.CodeBase.Core
             _attackTimer += Time.deltaTime;
             if (_target != null)
             {
-                if (Vector3.Distance(transform.position, _target.position) <= attackDistance)
+                if (Vector3.Distance(transform.position, _target.transform.position) <= attackDistance)
                 {
                     movingBehaviour.CancelAction();
-                    transform.LookAt(_target);
+                    transform.LookAt(_target.transform);
                     DoAttack();
                 }
                 else
                 {
-                    movingBehaviour.MoveTo(_target.position);
+                    movingBehaviour.MoveTo(_target.transform.position);
                 }
             }
         }
@@ -47,20 +47,24 @@ namespace Main.CodeBase.Core
             _attackTimer = 0f;
         }
 
-        public void Attack(EnemyController enemy)
+        public void Attack(Health enemy)
         {
             actionScheduler.StartAction(this);
-            _target = enemy.transform;
+            _target = enemy;
         }
 
         public void CancelAction()
         {
             _target = null;
+            animationBehaviour.StopAttackAnimation();
         }
 
         public void Hit()
         {
-            _target.GetComponent<Health>().TakeDamage(damage);
+            if(_target == null) return;
+            _target.TakeDamage(damage);
+            if (_target.IsDead)
+                CancelAction();
         }
     }
 }

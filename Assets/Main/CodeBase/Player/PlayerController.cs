@@ -31,7 +31,7 @@ namespace Main.CodeBase.Player
                 if (hit.collider.TryGetComponent<EnemyController>(out var enemyController))
                 {
                     if (Input.GetMouseButtonDown(0))
-                        combatBehavior.Attack(enemyController);
+                        combatBehavior.Attack(enemyController.GetComponent<Health>());
                     return true;
                 }
             }
