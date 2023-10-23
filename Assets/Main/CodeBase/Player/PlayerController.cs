@@ -43,11 +43,10 @@ namespace Main.CodeBase.Player
         {
             if (Input.GetMouseButton(0))
             {
-                combatBehavior.Stop();
                 Ray ray = GetRay();
                 bool hasHit = Physics.Raycast(ray, out RaycastHit hit);
                 if (hasHit)
-                    movingBehaviour.MoveTo(hit.point);
+                    movingBehaviour.StartMoveAction(hit.point);
                 return true;
             }
 

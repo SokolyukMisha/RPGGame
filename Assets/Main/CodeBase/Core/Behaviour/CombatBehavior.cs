@@ -4,11 +4,13 @@ using UnityEngine;
 
 namespace Main.CodeBase.Core
 {
-    public class CombatBehavior : MonoBehaviour
+    public class CombatBehavior : MonoBehaviour, IAction
     {
         [SerializeField] private MovingBehaviour movingBehaviour;
+        [SerializeField] private ActionScheduler actionScheduler;
         [SerializeField] private float attackDistance = 10f;
-        
+
+
         private Transform _target;
 
         private void Update()
@@ -17,7 +19,7 @@ namespace Main.CodeBase.Core
             {
                 if (Vector3.Distance(transform.position, _target.position) <= attackDistance)
                 {
-                    movingBehaviour.Stop();
+                    movingBehaviour.CancelAction();
                 }
                 else
                 {
@@ -29,10 +31,11 @@ namespace Main.CodeBase.Core
 
         public void Attack(EnemyController enemy)
         {
+            actionScheduler.StartAction(this);
             _target = enemy.transform;
         }
         
-        public void Stop()
+        public void CancelAction()
         {
             _target = null;
         }

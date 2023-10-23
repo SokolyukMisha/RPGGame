@@ -6,14 +6,21 @@ using UnityEngine.AI;
 
 namespace Main.CodeBase.Core
 {
-    public class MovingBehaviour : MonoBehaviour
+    public class MovingBehaviour : MonoBehaviour, IAction
     {
         [SerializeField] private AnimationBehaviour animationBehaviour;
         [SerializeField] private NavMeshAgent agent;
+        [SerializeField] private ActionScheduler actionScheduler;
 
         private void Update()
         {
             UpdateMovementAnimation();
+        }
+        
+        public void StartMoveAction(Vector3 destination)
+        {
+            actionScheduler.StartAction(this);
+            MoveTo(destination);
         }
 
         public void MoveTo(Vector3 position)
@@ -22,7 +29,7 @@ namespace Main.CodeBase.Core
             agent.SetDestination(position);
         }
         
-        public void Stop()
+        public void CancelAction()
         {
             agent.isStopped = true;
         }
