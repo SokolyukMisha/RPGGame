@@ -1,9 +1,13 @@
+using System;
 using Main.CodeBase.Core;
+using Main.CodeBase.Core.Behaviour;
 using Main.CodeBase.Enemy;
 using UnityEngine;
 
 namespace Main.CodeBase.Player
 {
+    [RequireComponent(typeof(CombatBehavior))]
+    [RequireComponent(typeof(MovingBehaviour))]
     public class PlayerController : MonoBehaviour
     {
         [Header("Require components")] 
@@ -11,6 +15,12 @@ namespace Main.CodeBase.Player
         [SerializeField] private MovingBehaviour movingBehaviour;
 
         private Camera _camera;
+
+        private void OnValidate()
+        {
+            combatBehavior??=GetComponent<CombatBehavior>();
+            movingBehaviour??=GetComponent<MovingBehaviour>();
+        }
 
         private void Start()
         {

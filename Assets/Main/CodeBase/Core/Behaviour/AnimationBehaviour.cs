@@ -1,16 +1,22 @@
 ﻿using UnityEngine;
 
-
-namespace Main.CodeBase.Core
+namespace Main.CodeBase.Core.Behaviour
 {
+    [RequireComponent(typeof(Animator))]
     public class AnimationBehaviour : MonoBehaviour
     {
+        [Header("Required Components")]
         [SerializeField] private Animator animator;
 
         private static readonly int Speed = Animator.StringToHash("Speed");
         private static readonly int Attack = Animator.StringToHash("Attack");
         private static readonly int Death = Animator.StringToHash("Death");
         private static readonly int StopAttack = Animator.StringToHash("StopAttack");
+        
+        private void OnValidate()
+        {
+            animator ??= GetComponent<Animator>();
+        }
 
         public void PlayAttackAnimation()
         {

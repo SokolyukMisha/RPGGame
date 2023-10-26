@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using UnityEngine.Serialization;
+﻿using Main.CodeBase.Core.Behaviour;
+using UnityEngine;
 
 namespace Main.CodeBase.Core
 {
