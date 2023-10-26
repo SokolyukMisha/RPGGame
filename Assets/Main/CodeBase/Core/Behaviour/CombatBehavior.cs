@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Main.CodeBase.Core.Behaviour
 {
@@ -19,7 +18,7 @@ namespace Main.CodeBase.Core.Behaviour
         [SerializeField] private float damage = 1f;
         
         private Health _target;
-        private float _attackTimer;
+        private float _lastAttackTimer = Mathf.Infinity;
 
         private void OnValidate()
         {
@@ -30,7 +29,7 @@ namespace Main.CodeBase.Core.Behaviour
 
         private void Update()
         {
-            _attackTimer += Time.deltaTime;
+            _lastAttackTimer += Time.deltaTime;
             if (_target != null)
             {
                 if (Vector3.Distance(transform.position, _target.transform.position) <= attackDistance)
@@ -48,9 +47,9 @@ namespace Main.CodeBase.Core.Behaviour
 
         private void DoAttack()
         {
-            if (_attackTimer < attackSpeed) return;
+            if (_lastAttackTimer < attackSpeed) return;
             animationBehaviour.PlayAttackAnimation();
-            _attackTimer = 0f;
+            _lastAttackTimer = 0f;
         }
 
         public void Attack(Health enemy)

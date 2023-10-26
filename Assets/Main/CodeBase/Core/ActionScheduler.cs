@@ -12,5 +12,10 @@ namespace Main.CodeBase.Core
             _currentAction?.CancelAction();
             _currentAction = action;
         }
+        
+        public void CancelCurrentAction()
+        {
+            StartAction(null);
+        }
     }
 }

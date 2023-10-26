@@ -1,4 +1,3 @@
-using System;
 using Main.CodeBase.Core;
 using Main.CodeBase.Core.Behaviour;
 using Main.CodeBase.Enemy;
@@ -8,11 +7,13 @@ namespace Main.CodeBase.Player
 {
     [RequireComponent(typeof(CombatBehavior))]
     [RequireComponent(typeof(MovingBehaviour))]
+    [RequireComponent(typeof(Health))]
     public class PlayerController : MonoBehaviour
     {
         [Header("Require components")] 
         [SerializeField] private CombatBehavior combatBehavior;
         [SerializeField] private MovingBehaviour movingBehaviour;
+        [SerializeField] private Health health;
 
         private Camera _camera;
 
@@ -20,6 +21,7 @@ namespace Main.CodeBase.Player
         {
             combatBehavior??=GetComponent<CombatBehavior>();
             movingBehaviour??=GetComponent<MovingBehaviour>();
+            health??=GetComponent<Health>();
         }
 
         private void Start()
@@ -29,6 +31,7 @@ namespace Main.CodeBase.Player
 
         private void Update()
         {
+            if(health.IsDead) return;
             if(CheckForInteraction()) return;
             if(MoveToCursor()) return;
             
