@@ -40,6 +40,11 @@ namespace Main.CodeBase.Core.Behaviour
         {
             agent.isStopped = true;
         }
+        
+        public void SetSpeed(float speed)
+        {
+            agent.speed = speed;
+        }
 
         private void UpdateMovementAnimation()
         {

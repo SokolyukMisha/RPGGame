@@ -17,7 +17,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4498655542935043722, guid: d7d763c8b4253df4ba6679b6b3cac5f5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 5.31
       objectReference: {fileID: 0}
     - target: {fileID: 4498655542935043722, guid: d7d763c8b4253df4ba6679b6b3cac5f5, type: 3}
       propertyPath: m_LocalPosition.y
@@ -29,7 +29,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4498655542935043722, guid: d7d763c8b4253df4ba6679b6b3cac5f5, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.68594545
       objectReference: {fileID: 0}
     - target: {fileID: 4498655542935043722, guid: d7d763c8b4253df4ba6679b6b3cac5f5, type: 3}
       propertyPath: m_LocalRotation.x
@@ -37,7 +37,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4498655542935043722, guid: d7d763c8b4253df4ba6679b6b3cac5f5, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0.727653
       objectReference: {fileID: 0}
     - target: {fileID: 4498655542935043722, guid: d7d763c8b4253df4ba6679b6b3cac5f5, type: 3}
       propertyPath: m_LocalRotation.z
@@ -49,7 +49,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4498655542935043722, guid: d7d763c8b4253df4ba6679b6b3cac5f5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -93.38
       objectReference: {fileID: 0}
     - target: {fileID: 4498655542935043722, guid: d7d763c8b4253df4ba6679b6b3cac5f5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -127,9 +127,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 902c11814edc481aba5d9eda94ba1603, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationBehaviour: {fileID: 0}
+  animationBehaviour: {fileID: 1862257620064804687}
   capsuleCollider: {fileID: 1238030457600558287}
-  health: 100
+  actionScheduler: {fileID: 9020726180375204622}
+  health: 20
 --- !u!114 &7424427558592770145
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,9 +144,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingBehaviour: {fileID: 1782369532283436059}
-  animationBehaviour: {fileID: 1862257620064804687}
   combatBehavior: {fileID: 2243539076695791156}
-  chaseDistance: 10
+  health: {fileID: 4646722979616838269}
+  patrolWayPoint: {fileID: 0}
+  chasingSpeed: 4
+  patrolSpeed: 2
+  chaseDistance: 5
+  timeToWait: 5
+  waypointTolerance: 1
+--- !u!114 &4646722979616838269 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6401067313248050567, guid: d7d763c8b4253df4ba6679b6b3cac5f5, type: 3}
+  m_PrefabInstance: {fileID: 1777040728610263034}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2794270542822863220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 902c11814edc481aba5d9eda94ba1603, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &9020726180375204622 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -1902384319509046028, guid: d7d763c8b4253df4ba6679b6b3cac5f5, type: 3}
+  m_PrefabInstance: {fileID: 1777040728610263034}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2794270542822863220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50f7948c8eab469cb0c5b49d60230906, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &9211343704624780388
 PrefabInstance:
   m_ObjectHideFlags: 0
