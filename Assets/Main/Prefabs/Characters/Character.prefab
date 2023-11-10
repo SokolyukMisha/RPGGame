@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -1902384319509046028}
   - component: {fileID: 6032495410476001}
   - component: {fileID: -8679571418760980018}
-  - component: {fileID: 973639041384847810}
+  - component: {fileID: 6401067313248050567}
   m_Layer: 0
   m_Name: Character
   m_TagString: Player
@@ -154,7 +154,7 @@ MonoBehaviour:
   attackDistance: 10
   attackSpeed: 1
   damage: 1
---- !u!114 &973639041384847810
+--- !u!114 &6401067313248050567
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -163,8 +163,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4498655542935043726}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1641e6fbfa1137f4f95372dc071e65bb, type: 3}
+  m_Script: {fileID: 11500000, guid: 902c11814edc481aba5d9eda94ba1603, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  combatBehavior: {fileID: -8679571418760980018}
-  movingBehaviour: {fileID: 6032495410476001}
+  animationBehaviour: {fileID: 103934982775197877}
+  capsuleCollider: {fileID: 686533981982821173}
+  actionScheduler: {fileID: -1902384319509046028}
+  health: 100

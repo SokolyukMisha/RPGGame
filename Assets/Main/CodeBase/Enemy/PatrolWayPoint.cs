@@ -9,16 +9,19 @@ namespace Main.CodeBase.Enemy
 
         private void OnDrawGizmos()
         {
-            GUIStyle labelStyle = new GUIStyle();
-            labelStyle.fontSize = 20;
-            labelStyle.normal.textColor = Color.red;
+            GUIStyle labelStyle = new GUIStyle
+            {
+                fontSize = 20,
+                normal =
+                {
+                    textColor = Color.red
+                }
+            };
             for (int i = 0; i < transform.childCount; i++)
             {
                 Gizmos.DrawSphere(transform.GetChild(i).position, gizmoRadius);
-#if UNITY_EDITOR
                 int index = i + 1;
                 Handles.Label(transform.GetChild(i).position, index.ToString(), labelStyle);
-#endif
 
                 DrawLine(i);
             }
