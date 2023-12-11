@@ -1,30 +1,35 @@
-﻿using System;
-using Main.CodeBase.Enemy;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Main.CodeBase.Core
+namespace Main.CodeBase.Core.Behaviour
 {
+    [RequireComponent(typeof(MovingBehaviour))]
+    [RequireComponent(typeof(ActionScheduler))]
+    [RequireComponent(typeof(AnimationBehaviour))]
     public class CombatBehavior : MonoBehaviour, IAction
     {
-        [Header("Required Components")] [SerializeField]
-        private MovingBehaviour movingBehaviour;
-
+        [Header("Required Components")] 
+        [SerializeField] private MovingBehaviour movingBehaviour;
         [SerializeField] private ActionScheduler actionScheduler;
         [SerializeField] private AnimationBehaviour animationBehaviour;
 
-        [Header("Attack parameters")] [SerializeField]
-        private float attackDistance = 10f;
-
+        [Header("Attack parameters")] 
+        [SerializeField] private float attackDistance = 10f;
         [SerializeField] private float attackSpeed = 1f;
         [SerializeField] private float damage = 1f;
-
-
+        
         private Health _target;
-        private float _attackTimer;
+        private float _lastAttackTimer = Mathf.Infinity;
+
+        private void OnValidate()
+        {
+            movingBehaviour??=GetComponent<MovingBehaviour>();
+            actionScheduler??=GetComponent<ActionScheduler>();
+            animationBehaviour??=GetComponent<AnimationBehaviour>();
+        }
 
         private void Update()
         {
-            _attackTimer += Time.deltaTime;
+            _lastAttackTimer += Time.deltaTime;
             if (_target != null)
             {
                 if (Vector3.Distance(transform.position, _target.transform.position) <= attackDistance)
@@ -42,9 +47,9 @@ namespace Main.CodeBase.Core
 
         private void DoAttack()
         {
-            if (_attackTimer < attackSpeed) return;
+            if (_lastAttackTimer < attackSpeed) return;
             animationBehaviour.PlayAttackAnimation();
-            _attackTimer = 0f;
+            _lastAttackTimer = 0f;
         }
 
         public void Attack(Health enemy)

@@ -9,12 +9,13 @@ namespace Main.CodeBase.Core
         public void StartAction(IAction action)
         {
             if (_currentAction == action) return;
-            if (_currentAction != null)
-            {
-                _currentAction.CancelAction();
-            }
-
+            _currentAction?.CancelAction();
             _currentAction = action;
+        }
+        
+        public void CancelCurrentAction()
+        {
+            StartAction(null);
         }
     }
 }
